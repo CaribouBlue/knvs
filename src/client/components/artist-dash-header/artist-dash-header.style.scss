@@ -1,0 +1,11 @@
+@import '../../style';
+
+#header {
+  @extend .flex-row;
+  justify-content: center;
+
+  p {
+    font-size: 1.5rem;
+    font-family: $primary-font;
+  }
+}

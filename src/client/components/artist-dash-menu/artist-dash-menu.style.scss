@@ -1,0 +1,16 @@
+@import '../../style';
+
+#menu-container {
+  @extend .flex-row;
+  justify-content: center;
+
+  button {
+    width: 100%;
+    border: 1px solid black;
+    border-left: 0;
+    border-right: 0;
+    padding: 10px;
+    font-family: $secondary-font;
+    font-size: 1rem;
+  }
+}

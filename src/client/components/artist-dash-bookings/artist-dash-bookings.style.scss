@@ -1,0 +1,17 @@
+@import '../../style';
+
+#bookings-display-menu-container {
+  @extend .flex-row;
+  justify-content: center;
+
+  span {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  p {
+    font-family: $secondary-font;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+}
