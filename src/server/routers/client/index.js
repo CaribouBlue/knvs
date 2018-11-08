@@ -2,7 +2,7 @@ import express from 'express';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
-import Routes from '../../../client/components/router/Routes';
+import { Routes } from '../../../client/modules/router';
 import generateHtml from './generateHtml';
 
 const router = express.Router();

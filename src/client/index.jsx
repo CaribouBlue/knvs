@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import Router from './components/router/Router.jsx';
+import { Router } from './modules/router';
 
 render((
     <Router />

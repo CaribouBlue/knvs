@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { ArtistBookingsCalendar } from '../../artist-bookings';
-import UpdateEventForm from '../../../../components/update-event-form/UpdateEventForm';
+import UpdateEventForm from '../../../components/update-event-form/UpdateEventForm';
 
 export default class ArtistDashBookings extends React.Component {
   constructor(props) {

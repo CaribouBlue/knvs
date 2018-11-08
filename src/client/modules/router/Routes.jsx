@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import ArtistDash from '../../modules/artist-mods/artist-dash';
-import { Landing } from '../';
+import ArtistDash from '../artist-mods/artist-dash';
+import { Landing } from '../components';
 
 const Routes = props => (
   <Switch>
