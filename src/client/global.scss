@@ -1,0 +1,47 @@
+$primary-font: Roboto Slab;
+$secondary-font: Roboto;
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+}
+
+#app-anchor {
+  height: 100%;
+}
+
+button {
+  background-color: transparent;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: whitesmoke;
+}
+
+button:active {
+  background-color: lightgrey;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+@import './modules/artist-mods/artist-dash/style.scss';
+@import './modules/artist-mods/artist-bookings/style.scss';
+@import './components/landing/landing.style.scss';
+@import './components/update-event-form/update-event-form.style.scss';
+@import './modules/calendar/style.scss';
+@import './modules/dialog/style.scss';

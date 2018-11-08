@@ -1,8 +1,8 @@
 import React from 'react';
 import $ from 'jquery';
-import Dialog from '../../modules/dialog';
+import Dialog from '../../../dialog';
 
-import EventCalendar from '../../modules/calendar';
+import EventCalendar from '../../../calendar';
 
 export default class ArtistBookingsCalendar extends React.Component {
   constructor(props) {

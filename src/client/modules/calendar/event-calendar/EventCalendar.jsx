@@ -1,8 +1,8 @@
 import React from 'react';
 import calendar from 'node-calendar';
 
-import CalendarView from '../calendar-view/CalendarView';
-import ListView from '../list-view/ListView';
+import MonthView from '../month-view/MonthView';
+import WeekView from '../week-view/WeekView';
 
 const getWeeksArr = (month, year) => {
   const firstDayOfWeek = calendar.SUNDAY;
@@ -34,7 +34,7 @@ export default props => {
   const weeks = getWeeksArr(props.month, props.year);
 
   if (props.listView === true)
-    return <ListView {...props} weeksArr={weeks} />
+    return <WeekView {...props} weeksArr={weeks} />
   else
-    return <CalendarView {...props} weeks={weeks} />;
+    return <MonthView {...props} weeks={weeks} />;
 };

@@ -4,9 +4,9 @@ const extractCSS = new ExtractTextPlugin('./client/style/index.css');
 
 module.exports = [
   {
-    entry: ['./src/client/index.jsx', './src/client/style/index.scss'],
+    entry: ['./src/client/index.jsx', './src/client/global.scss'],
     output: {
-      path: path.resolve(__dirname, './build/server/static/dist'),
+      path: path.resolve(__dirname, './static/dist'),
       filename: 'client-bundle.js',
     },
     resolve: {
