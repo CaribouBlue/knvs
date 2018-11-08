@@ -1,7 +1,7 @@
-@import '../../style';
-
 #menu-container {
   @extend .flex-row;
+  height: 42px;
+  min-height: 42px;
   justify-content: center;
 
   button {
@@ -12,5 +12,9 @@
     padding: 10px;
     font-family: $secondary-font;
     font-size: 1rem;
+  }
+
+  .menu-item.open {
+    background-color: whitesmoke;
   }
 }

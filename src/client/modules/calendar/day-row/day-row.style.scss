@@ -1,0 +1,33 @@
+.day-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+
+  .day-number {
+    width: 100%;
+    margin: 0;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid black;
+    cursor: pointer;
+  }
+}
+
+.row-event-time {
+  width: fit-content;
+
+  margin: 0;
+  margin-top: 10px;
+  margin-left: 5px;
+
+  padding: 0;
+  padding-right: 5px;
+  padding-left: 5px;
+  border-radius: 5px;
+  color: white;
+  background-color: black;
+}
+
+.row-event-time.first {
+  margin-top: 2px;
+}

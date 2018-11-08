@@ -1,0 +1,29 @@
+.event-cal {
+  visibility: hidden;
+  width: 100%;
+  border-collapse: collapse;
+
+  tbody {
+    tr {
+      td {
+
+      }
+    }
+
+    tr.day-header {
+      td {
+        border-right: 1px solid black;
+
+          p {
+            margin: 0;
+            font-weight: bold;
+            text-align: center;
+          }
+      }
+
+      td:last-child {
+        border-right: 0;
+      }
+    }
+  }
+}

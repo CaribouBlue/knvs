@@ -1,7 +1,7 @@
-@import '../../style';
-
 #header {
   @extend .flex-row;
+  height: 80px;
+  min-height: 80px;
   justify-content: center;
 
   p {

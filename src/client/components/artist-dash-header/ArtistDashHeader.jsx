@@ -1,5 +1,4 @@
 import React from 'react';
-import './artist-dash-header.style';
 
 export default props => (
   <header id="header">

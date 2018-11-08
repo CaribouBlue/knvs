@@ -1,0 +1,38 @@
+.event-container {
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 1px 0 1px 0;
+  padding-right: 5px;
+  cursor: pointer;
+  background-color: white;
+  border: 1px solid black;
+
+  div {
+    display: flex;
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+
+    span {
+      width: 5px;
+      height: 100%;
+      margin-right: 5px;
+      background-color: black;
+    }
+
+    p {
+      margin: 0;
+    }
+
+  }
+}
+
+.event-container:hover {
+  background-color: black;
+  color: white;
+
+  span {
+    color: black;
+  }
+}

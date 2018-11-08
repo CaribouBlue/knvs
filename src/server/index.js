@@ -1,9 +1,10 @@
 import express from 'express';
 import path from 'path';
+import clientRouter from './routers/client';
 
 
 ////////////////////////////////////////////////////////////////////////////
-// Server Setup                                                                       
+// Server Setup
 ////////////////////////////////////////////////////////////////////////////
 const app = express();
 const port = 1337;
@@ -11,21 +12,13 @@ app.listen(port, () => console.log(`Listening on port ${port}`))
 
 
 ////////////////////////////////////////////////////////////////////////////
-// Middleware                                                                       
+// Middleware
 ////////////////////////////////////////////////////////////////////////////
 app.use(express.static(path.resolve(__dirname, './static')));
 
 
 ////////////////////////////////////////////////////////////////////////////
-// App Routes                                                                       
-////////////////////////////////////////////////////////////////////////////
-app.get('/', (req, res) => {
-  res.sendFile(path.resolve(__dirname, './static'));
-});
-
-
-////////////////////////////////////////////////////////////////////////////
-// Api Routes                                                                       
+// Api Routes
 ////////////////////////////////////////////////////////////////////////////
 const api = express.Router();
 app.use('/api', api);
@@ -33,3 +26,5 @@ app.use('/api', api);
 api.get('/', (req, res) => {
   res.send('Hello API');
 });
+
+app.use('*', clientRouter);

@@ -1,13 +1,11 @@
 import React from 'react';
 
-import './artist-dash-menu.style';
-
 export default class ArtistDashMenu extends React.Component { 
   render () {
     return (
       <div id="menu-container">
         <button
-          className="menu-item"
+          className="menu-item open"
         >bookings</button>
         <button
           className="menu-item"

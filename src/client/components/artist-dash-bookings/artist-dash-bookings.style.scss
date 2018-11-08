@@ -1,8 +1,8 @@
-@import '../../style';
-
 #bookings-display-menu-container {
   @extend .flex-row;
   justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
 
   span {
     margin-left: 20px;
@@ -10,8 +10,13 @@
   }
 
   p {
+    margin: 0;
     font-family: $secondary-font;
     font-size: 1.2rem;
     cursor: pointer;
+  }
+
+  p.open {
+    color: grey;
   }
 }

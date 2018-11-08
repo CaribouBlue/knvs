@@ -1,0 +1,26 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  margin-bottom: 40px;
+
+  background-color: whitesmoke;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.input-row {
+  display: flex;
+  justify-content: space-around;
+
+  textarea {
+    margin-top: 20px;
+    width: 80%;
+  }
+
+  button {
+    margin-top: 20px;
+    background-color: white;
+    border: 1px solid black;
+  }
+}
