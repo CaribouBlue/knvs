@@ -19,7 +19,10 @@ export default class ArtistBookingsCalendar extends React.Component {
       openEvent: null,
     };
 
-    $('document').ready(this.setBookingCalCellHeights);
+    $('document').ready(() => {
+      this.setBookingCalCellHeights();
+      $('#bookings-calendar-container').resize(() => console.log('cal0resize'));
+    });
     $(window).resize(() => {
       this.setBookingCalCellHeights();
     });
@@ -144,6 +147,7 @@ export default class ArtistBookingsCalendar extends React.Component {
             events={this.props.bookings}
             listView={this.props.listView}
             onEventClick={this.openEventDialog}
+            onMount={this.setBookingCalCellHeights}
           />
         </div>
         {
