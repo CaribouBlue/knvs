@@ -1,5 +1,6 @@
 import React from 'react';
 import _ from 'underscore';
+import moment from 'moment';
 
 import Event from '../event/Event';
 
@@ -7,13 +8,19 @@ import Event from '../event/Event';
 export default class DayBox extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       hoveredEvent: null,
     };
   }
 
-  isToday = new Date(`${this.props.date.year}-${this.props.date.month}-${this.props.date.day}`).toDateString() == new Date().toDateString();
+  isToday = () => {
+    const date = this.props.date;
+    if (date.day === 0)
+      return false;
+    const dateStr = `${date.year}-${date.month}-${date.day}`;
+    return dateStr === moment().format('YYYY-MM-D');
+  }
+
   events = this.props.events || [];
   onEventClick = (event) => this.props.onEventClick(this.props.date, event);
 
@@ -29,11 +36,11 @@ export default class DayBox extends React.Component {
 
   render() {
     if (this.props.date.day === 0)
-      return <td className="day-cell empty"></td>;
+      return <div className="day-cell empty"></div>;
 
     return (
-      <td
-        className={'day-cell' + ( this.isToday ? ' today' : '')}
+      <div
+        className={'day-cell' + ( this.isToday() ? ' today' : '')}
         onClick={this.handleBoxClick}
         boxclick="true"
       >
@@ -81,7 +88,7 @@ export default class DayBox extends React.Component {
               ))
           }
         </div>
-      </td>
+      </div>
     );
   }
 };

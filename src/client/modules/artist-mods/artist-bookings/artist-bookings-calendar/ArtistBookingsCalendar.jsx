@@ -1,5 +1,4 @@
 import React from 'react';
-import $ from 'jquery';
 import Dialog from '../../../dialog';
 
 import EventCalendar from '../../../calendar';
@@ -18,54 +17,25 @@ export default class ArtistBookingsCalendar extends React.Component {
       search: '',
       openEvent: null,
     };
-
-    $('document').ready(() => {
-      this.setBookingCalCellHeights();
-      $('#bookings-calendar-container').resize(() => console.log('cal0resize'));
-    });
-    $(window).resize(() => {
-      this.setBookingCalCellHeights();
-    });
   }
 
-  setBookingCalCellHeights = () => {
-    $.map(
-      $('#bookings-calendar-container').find('td').slice(8),
-      el => {
-        $(el).innerHeight(0)
-      });
-    const calRows = $('#bookings-calendar-container').find('tr').length - 2;
-    const tableHeight =
-      $('#bookings-calendar-container').height() -
-      $('.day-header').innerHeight() -
-      $('.day-header-spacer').innerHeight();
-    const cellHeight = tableHeight / calRows;
-    $.map(
-      $('#bookings-calendar-container').find('td').slice(8),
-      el => {
-        $(el).innerHeight(cellHeight)
-    });
-    this.showBookingCal();
+
+  getViewBtnClass = (name) => {
+    if (this.state.view === name)
+      return 'open';
+    return '';
   }
 
-  showBookingCal = () => {
-    $('.event-cal').css('visibility', 'visible');
+  onEventClick = (date, event) => {
+    this.setState({ openEvent: { date, event } });
   }
 
   setOpenEvent = (openEvent) => {
     this.setState({ openEvent }, this.setBookingCalCellHeights);
   }
 
-  getViewBtnClass(name) {
-    if (this.state.view === name)
-      return 'open';
-    return '';
-  }
-
-  openEventDialog = (date, event) => {
-    this.setState({
-      openEvent: { event },
-    });
+  onBoxClick = (date, events) => {
+    this.setState({ openEvent: { date } });
   }
 
   onViewBtnClick = (e) => {
@@ -146,7 +116,8 @@ export default class ArtistBookingsCalendar extends React.Component {
             year={Number(this.state.date.year)}
             events={this.props.bookings}
             listView={this.props.listView}
-            onEventClick={this.openEventDialog}
+            onEventClick={this.onEventClick}
+            onBoxClick={this.onBoxClick}
             onMount={this.setBookingCalCellHeights}
           />
         </div>
@@ -154,7 +125,6 @@ export default class ArtistBookingsCalendar extends React.Component {
           this.state.openEvent &&
           <Dialog
             onDialogClose={() => this.setOpenEvent(null)}
-            onMount={this.setBookingCalCellHeights}
           />
         }
       </>
