@@ -1,0 +1,35 @@
+#bookings-calendar-view {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+
+  p {
+    margin: 0;
+    margin-right: 10px;
+  }
+
+  span {
+    margin-right: 10px;
+  }
+
+  #bookings-calendar-view-button-container {
+    display: flex;
+    height: fit-content;
+    box-sizing: border-box;
+    border: 1px solid black;
+
+    button {
+      box-sizing: border-box;
+    }
+
+    button:hover {
+      background-color: transparent;
+    }
+
+    button.open {
+      background-color: black;
+      color: white;
+    }
+  }
+}

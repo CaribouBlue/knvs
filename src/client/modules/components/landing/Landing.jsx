@@ -7,7 +7,7 @@ export default props => (
       <h1>k n v s</h1>
     </div>
     <div id="link-container">
-      <Link to="/artist">E N T E R</Link>
+      <Link to="/artist/bookings">E N T E R</Link>
     </div>
   </>
 );

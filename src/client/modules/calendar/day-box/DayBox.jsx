@@ -13,12 +13,13 @@ export default class DayBox extends React.Component {
     };
   }
 
+
   isToday = () => {
     const date = this.props.date;
     if (date.day === 0)
       return false;
     const dateStr = `${date.year}-${date.month}-${date.day}`;
-    return dateStr === moment().format('YYYY-MM-D');
+    return dateStr === moment().format('YYYY-MM-DD');
   }
 
   events = this.props.events || [];
@@ -35,7 +36,7 @@ export default class DayBox extends React.Component {
   }
 
   render() {
-    if (this.props.date.day === 0)
+    if (this.props.date.day === '00')
       return <div className="day-cell empty"></div>;
 
     return (
@@ -54,7 +55,7 @@ export default class DayBox extends React.Component {
           >
             <p
               boxclick="true"
-            >{this.props.date.day}</p>
+            >{Number(this.props.date.day)}</p>
             {
               this.state.hoveredEvent &&
               <div
@@ -64,10 +65,8 @@ export default class DayBox extends React.Component {
                   boxclick="true"
                 >
                   {`
-                    ${this.state.hoveredEvent.startTime.hrs}:
-                    ${this.state.hoveredEvent.startTime.min} -
-                    ${this.state.hoveredEvent.endTime.hrs}:
-                    ${this.state.hoveredEvent.endTime.min}
+                    ${this.state.hoveredEvent.startTime} -
+                    ${this.state.hoveredEvent.endTime}
                   `}
                 </p>
               </div>

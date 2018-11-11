@@ -31,7 +31,7 @@ const getWeekRowClass = (i) => {
 };
 
 export default props => {
-  const weeks = getWeeksArr(props.month, props.year);
+  const weeks = getWeeksArr(Number(props.month), Number(props.year));
 
   if (props.listView === true)
     return <WeekView {...props} weeksArr={weeks} />

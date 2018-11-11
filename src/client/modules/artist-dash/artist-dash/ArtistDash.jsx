@@ -13,7 +13,7 @@ export default class ArtistDashboard extends React.Component {
       >
         <ArtistDashHeader />
         <ArtistDashMenu />
-        <ArtistDashBookings />
+        {this.props.children}
       </div>
     );
   }

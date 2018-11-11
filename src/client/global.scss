@@ -39,8 +39,8 @@ button:active {
   flex-direction: column;
 }
 
-@import './modules/artist-mods/artist-dash/style.scss';
-@import './modules/artist-mods/artist-bookings/style.scss';
+@import './modules/artist-dash/style.scss';
+@import './modules/artist-bookings/style.scss';
 @import './modules/components/style.scss';
 @import './modules/calendar/style.scss';
 @import './modules/dialog/style.scss';

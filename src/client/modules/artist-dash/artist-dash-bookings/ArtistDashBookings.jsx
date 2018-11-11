@@ -1,7 +1,7 @@
 import React from 'react';
 
+import ArtistDash from '../artist-dash/ArtistDash';
 import { ArtistBookingsCalendar } from '../../artist-bookings';
-import UpdateEventForm from '../../../components/update-event-form/UpdateEventForm';
 
 export default class ArtistDashBookings extends React.Component {
   constructor(props) {
@@ -11,57 +11,33 @@ export default class ArtistDashBookings extends React.Component {
       updatingBooking: null,
       bookingsDisplay: 'calendar',
       bookings: {
-        2018116: [
+        20181106: [
           {
             id: 0,
             name: 'Joe',
-            startTime: {
-              hrs: 13,
-              min: 30,
-            },
-            endTime: {
-              hrs: 14,
-              min: 30,
-            },
+            startTime: '13:30',
+            endTime: '14:30',
             desc: '2 tattos. see booking details'
           },
           {
             id: 1,
             name: 'Jim',
-            startTime: {
-              hrs: 12,
-              min: 30,
-            },
-            endTime: {
-              hrs: 13,
-              min: 30,
-            },
+            startTime: '12:30',
+            endTime: '13:30',
           },
         ],
-        2018117: [
+        20181107: [
           {
             id: 0,
             name: 'Joe',
-            startTime: {
-              hrs: 13,
-              min: 30,
-            },
-            endTime: {
-              hrs: 14,
-              min: 30,
-            },
+            startTime: '13:30',
+            endTime: '14:30',
           },
           {
             id: 1,
             name: 'Jim',
-            startTime: {
-              hrs: 12,
-              min: 30,
-            },
-            endTime: {
-              hrs: 13,
-              min: 30,
-            },
+            startTime: '12:30',
+            endTime: '13:30',
           },
         ],
       },
@@ -128,7 +104,7 @@ export default class ArtistDashBookings extends React.Component {
 
   render() {
     return (
-      <>
+      <ArtistDash>
         <div id="bookings-display-menu-container">
           <p
             className={this.getDisaplyBtnClass('calendar')}
@@ -151,14 +127,6 @@ export default class ArtistDashBookings extends React.Component {
           >settings</p>
         </div>
         {
-          this.state.updatingBooking &&
-            <UpdateEventForm
-              {...this.state.updatingBooking}
-              closeForm={this.closeUpdateBookings}
-              updateEvent={this.updateBooking}
-            />
-        }
-        {
           (
             this.state.bookingsDisplay === 'calendar' ||
             this.state.bookingsDisplay === 'list'
@@ -169,7 +137,7 @@ export default class ArtistDashBookings extends React.Component {
               listView={this.state.bookingsDisplay === 'list'}
             />
         }
-      </>
+      </ArtistDash>
     );
   }
 }

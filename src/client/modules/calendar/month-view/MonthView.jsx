@@ -41,7 +41,7 @@ export default props => (
           {
             week.map((day, dayI) => {
               const date = {
-                day,
+                day: `${day}`.padStart(2, '0'),
                 month: props.month,
                 year: props.year,
               };

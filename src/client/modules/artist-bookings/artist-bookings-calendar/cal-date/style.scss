@@ -1,0 +1,20 @@
+#bookings-calendar-current {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+
+  p {
+    margin: 0;
+    margin-right: 10px;
+  }
+
+  span {
+    margin-right: 10px;
+  }
+
+  input {
+    padding-left: 5px;
+    border: 1px solid black;
+  }
+}

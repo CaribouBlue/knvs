@@ -1,8 +1,27 @@
 import React from 'react';
-import _ from 'underscore';
+import { fadeInUp, fadeOutDown } from 'react-animations'
+import Radium, {StyleRoot} from 'radium';
 
 
 export default class DialogBox extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      animation: 'fadeInUp',
+    };
+  }
+
+  styles = {
+    fadeInUp: {
+      animation: 'x 0.5s',
+      animationName: Radium.keyframes(fadeInUp, 'fadeInUp')
+    },
+    fadeOutDown: {
+      animation: 'x 0.5s',
+      animationName: Radium.keyframes(fadeOutDown, 'fadeOutDown')
+    }
+  }
 
   onContainerClick = (e) => {
     if (e.target.className === 'dialog-container')
@@ -10,21 +29,28 @@ export default class DialogBox extends React.Component {
   }
 
   closeDialog = () => {
-    this.props.onDialogClose();
+    this.setState(
+      { animation: 'fadeOutDown' },
+      () => setTimeout(() => this.props.onDialogClose(), 400),
+    );
   }
 
   render() {
     return (
-      <div
+      <StyleRoot
         className="dialog-container"
         onClick={this.onContainerClick}
       >
         <div
           className="dialog-box"
+          style={{
+            ...this.props.boxStyle,
+            ...this.styles[this.state.animation]
+          }}
         >
-          Dialog
+          {this.props.children}
         </div>
-      </div>
+      </StyleRoot>
     );
   }
 }

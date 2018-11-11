@@ -16,7 +16,11 @@ router.get('*', (req, res) => {
     </StaticRouter>
   );
 
-  res.status(200).send(generateHtml(app));
+  if (context.url) {
+    res.redirect(context.url);
+  } else{
+    res.status(200).send(generateHtml(app));
+  }
 });
 
 export default router;
