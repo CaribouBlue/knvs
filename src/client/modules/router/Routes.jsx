@@ -1,29 +1,22 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import _ from 'underscore';
-import { ArtistDashBookings } from '../artist-dash';
-import { Landing } from '../components';
+import routesConfig from './config';
 
-const routesConfig = [
-  {
-    path: '/',
-    component: Landing,
-  },
-  {
-    path: '/artist/bookings',
-    component: ArtistDashBookings,
-  },
-];
-
-const Routes = props => (
-  <Switch>
-    {
-      routesConfig.map(routeConfig =>
-        <Route exact key={_.uniqueId()} {...routeConfig} />
-      )
-    }
-  </Switch>
-);
+const Routes = props => {
+  return (
+    <Switch>
+      {
+        routesConfig.map(routeConfig =>
+          <Route exact key={_.uniqueId()} path={routeConfig.path} render={renderProps => {
+            console.log(routeConfig.path, props)
+            return <routeConfig.component {...renderProps} {...props} />
+          }} />
+        )
+      }
+    </Switch>
+  )
+};
 // <Route path="*" component={PageNotFound} />
 
 export default Routes;

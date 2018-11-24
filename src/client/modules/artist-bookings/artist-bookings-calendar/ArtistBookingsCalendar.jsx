@@ -67,7 +67,6 @@ export default class ArtistBookingsCalendar extends React.Component {
   }
 
   render() {
-    console.log(this.state.openEvent)
     return(
       <>
         <div

@@ -1,4 +1,4 @@
-const generateHtml = (rootContent) => `
+const generateHtml = (rootContent, state) => `
   <!doctype html>
   <html>
   <head>
@@ -16,6 +16,10 @@ const generateHtml = (rootContent) => `
   </head>
   <body>
     <div id="app-anchor">${rootContent}</div>
+
+    <script>
+      window._state = ${JSON.stringify(state).replace(/</g, '\\u003c')}
+    </script>
 
     <script src="/dist/client-bundle.js"></script>
   </body>

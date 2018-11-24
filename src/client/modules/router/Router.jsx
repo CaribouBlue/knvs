@@ -4,7 +4,7 @@ import { Routes } from './';
 
 const Router = props => (
   <BrowserRouter basename="">
-    <Routes />
+    <Routes loadedData={window._state} />
   </BrowserRouter>
 );
 
