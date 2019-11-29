@@ -1,27 +1,25 @@
 # RT Tech
 - react
-- react-helmet
-<!-- - react-router -->
 - next.js
-- react-redux
-- redux-saga / redux-thunk
-- redux-persist
 - node
 - express
-- graphQL
-- socket.io
 - firebase
-- spectre css / semantic UI
+- spectre.css
+- ? react-redux
+- ? redux-saga / redux-thunk
+- ? redux-persist
+- ? graphQL / Apollo
+- ? socket.io
 
 # Dev Tech
-- webpack-dev-server
-- react-hot-loader
-- redux-devtools
+- nodemon
+- ? redux-devtools
 
 # Build Tech
-- webpack
-- babel
+- next/css
+- next/scss
 
 # Testing Tech
 - Jest
 - Enzyme
+- ? cypress
