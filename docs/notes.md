@@ -11,6 +11,7 @@
 - graphQL
 - socket.io
 - firebase
+- spectre css / semantic UI
 
 # Dev Tech
 - webpack-dev-server
@@ -21,6 +22,6 @@
 - webpack
 - babel
 
-# Testing Tech =
+# Testing Tech
 - Jest
 - Enzyme

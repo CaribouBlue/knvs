@@ -7,13 +7,22 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "next start",
     "build": "next build",
-    "dev": "next"
+    "dev": "node server",
+    "dev:server": "nodemon server"
   },
   "author": "Alec Draymore",
   "license": "ISC",
   "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "@zeit/next-sass": "^1.0.1",
+    "express": "^4.17.1",
     "next": "^9.1.4",
+    "node-sass": "^4.13.0",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "spectre.css": "^0.5.8"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.1"
   }
 }
