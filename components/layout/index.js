@@ -9,7 +9,9 @@ export default (props) => {
         background-color: whitesmoke;
       }
     `}</style>
-    <Header></Header>
+    <Header
+      loggingIn={!!props.loggingIn}
+    ></Header>
     <div className="children-container">
       {props.children}
     </div>

@@ -1,4 +1,5 @@
 const express = require('express')
+const bodyParser = require('body-parser');
 const next = require('next')
 
 const dev = process.env.NODE_ENV !== 'production'
@@ -7,14 +8,22 @@ const handle = nextApp.getRequestHandler()
 
 nextApp.prepare()
   .then(() => {
-    app = express()
+    const app = express()
+    const api = express.Router()
+
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({ extended: true }));
+    app.use('/api', api)
+
+    
+
+    app.get('*', (req, res) => {
+      handle(req, res)
+    })
+
     PORT = process.env.PORT || process.env.port || 1337
     app.listen(PORT, () => {
       console.log(`listening on port ${PORT}`)
-    })
-
-    app.get('*', (req, res) => {
-      nextApp.render(req, res, req.path, req.query)
     })
   })
   .catch(err => {
