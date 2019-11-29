@@ -8,7 +8,9 @@
 - ? react-redux
 - ? redux-saga / redux-thunk
 - ? redux-persist
-- ? graphQL / Apollo
+- ? graphQL
+- ? Apollo
+- ? graphcool
 - ? socket.io
 
 # Dev Tech
