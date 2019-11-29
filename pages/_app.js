@@ -1,5 +1,6 @@
 import React from 'react'
 import App from 'next/app'
+import 'spectre.css'
 import '../utils/firebase';
 
 class MyApp extends App {

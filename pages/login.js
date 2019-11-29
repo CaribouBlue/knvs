@@ -2,6 +2,8 @@ import Router from 'next/router'
 import Layout from '../components/layout';
 import { signInWithEmailAndPassword } from '../utils/firebase/auth'
 import isAuthenticated from '../components/is-authenticated-hoc'
+import SignUpModal from '../components/sign-up-modal'
+import SpinnerButton from '../components/spinner-button'
 
 const formPartStyle = {
   marginTop: '20px',
@@ -92,7 +94,13 @@ class Login extends React.Component {
                   disabled={this.state.loggingIn}
                 ></input>
               </div>
-              {loginBtn}
+              <SpinnerButton
+                buttonStyle={formPartStyle}
+                spinnerStyle={{...formPartStyle, marginLeft: '25px', float: 'left'}}
+                spinner={this.state.loggingIn}
+                onClick={() => this.onLoginSubmit()}
+              >Login</SpinnerButton>
+              <SignUpModal></SignUpModal>
             </div>
           </div>
         </div>

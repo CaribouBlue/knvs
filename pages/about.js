@@ -1,5 +1,4 @@
 import Layout from '../components/layout';
-import isAuthenticated from '../components/is-authenticated-hoc'
 
 const page = props => (
   <>
@@ -7,7 +6,7 @@ const page = props => (
       <div className="container">
         <div className="columns">
           <div className="column col-12">
-            <p>Index</p>
+            <p>About</p>
           </div>
           <div className="column col-12">
             <p>child 2</p>
@@ -18,4 +17,4 @@ const page = props => (
   </>
 );
 
-export default isAuthenticated(page)
+export default page

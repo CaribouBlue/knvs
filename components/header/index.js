@@ -1,8 +1,7 @@
-import 'spectre.css'
 import './styles.scss'
 import Link from 'next/link'
-import { logout } from '../../utils/firebase/auth'
 import isAuthenticated from '../is-authenticated-hoc'
+import UserMenu from './user-menu'
 
 const leftNavBtnStyle = {
     marginRight: '15px',
@@ -12,19 +11,14 @@ const getRightNavSection = (props) => {
   const noAuth = <>
      <div className="input-group input-inline">
       <Link href="/login">
-        <button className="btn btn-primary input-group-btn">
-        Login</button>
+        <button className="btn btn-primary input-group-btn"
+        >Login</button>
       </Link>
     </div>
   </>
 
   const isAuth = <>
-     <div className="input-group input-inline">
-      <button className="btn btn-primary input-group-btn"
-        onClick={logout}
-      >
-      Logout</button>
-    </div>
+    <UserMenu></UserMenu>
   </>
 
   if (props.loggingIn) return null
@@ -46,7 +40,8 @@ const getLeftNavSection = (props) => {
     </Link>
   </>
 
-  return noAuth
+  if (props.isAuthenticated) return null
+  else return noAuth
 }
 
 const Header = (props) => {
