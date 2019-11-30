@@ -1,13 +1,16 @@
-import './styles.scss'
 import Link from 'next/link'
-import isAuthenticated from '../is-authenticated-hoc'
 import UserMenu from './user-menu'
+import { useRouter } from 'next/router'
+import isAuthenticated from '../is-authenticated-hoc'
+import { getPathSegment } from '../../utils/router'
+import NavBar from '../nav-bar'
 
+import './styles.scss'
 const leftNavBtnStyle = {
     marginRight: '15px',
 }
 
-const getRightNavSection = (props) => {
+const getRightNavSection = (props, router) => {
   const noAuth = <>
      <div className="input-group input-inline">
       <Link href="/login">
@@ -26,30 +29,51 @@ const getRightNavSection = (props) => {
   else return noAuth
 }
 
-const getLeftNavSection = (props) => {
+const getLeftNavSection = (props, router) => {
+  const pathBase = getPathSegment(router)
   const noAuth = <>
     <Link href="/about">
-      <a className="btn btn-link"
+      <a className={`btn btn-link ${pathBase === 'about' && 'text-secondary'}`}
         style={leftNavBtnStyle}
       >About</a>
     </Link>
     <Link href="/contact">
-      <a className="btn btn-link"
+      <a className={`btn btn-link ${pathBase === 'contact' && 'text-secondary'}`}
         style={leftNavBtnStyle}
       >Contact</a>
     </Link>
   </>
 
-  if (props.isAuthenticated) return null
+  const isAuth = <>
+    <Link href="/books">
+      <a className={`btn btn-link ${pathBase === 'books' && 'text-secondary'}`}
+        style={leftNavBtnStyle}
+      >Books</a>
+    </Link>
+    <Link href="/portfolio">
+      <a className={`btn btn-link ${pathBase === 'portfolio' && 'text-secondary'}`}
+        style={leftNavBtnStyle}
+      >Portfolio</a>
+    </Link>
+  </>
+
+
+  if (props.isAuthenticated) return isAuth
   else return noAuth
 }
 
 const Header = (props) => {
+  const router = useRouter()
+
+  let navBar = null
+  if (props.navBar)
+    navBar = <NavBar {...props} ></NavBar>
+
   return <>
     <div className="header-container">
       <header className="navbar">
         <section className="navbar-section">
-          {getLeftNavSection(props)}
+          {getLeftNavSection(props, router)}
         </section>
         <section className="navbar-center">
           <Link href="/">
@@ -61,10 +85,11 @@ const Header = (props) => {
           </Link>
         </section>
         <section className="navbar-section">
-          {getRightNavSection(props)}
+          {getRightNavSection(props, router)}
         </section>
       </header>
     </div>
+    {navBar}
   </>
 }
 

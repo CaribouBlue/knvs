@@ -16,6 +16,7 @@ class Login extends React.Component {
       email: '',
       password: '',
       loggingIn: false,
+      loginError: null,
     }
   }
 
@@ -24,13 +25,14 @@ class Login extends React.Component {
   }
 
   onLoginSubmit() {
-    this.setState({loggingIn: true})
+    this.setState({loggingIn: true, loginError: null})
     signInWithEmailAndPassword(this.state.email, this.state.password)
-      .then(data => {
-        return this.props.checkAuth()
-      })
       .catch(err => {
-        console.log(err)
+        const { code, msg } = err
+        if (code === 'auth/wrong-password' || code === 'auth/user-not-found')
+          this.setState({loginError: 'Invalid email or password'})
+        else
+          this.setState({loginError: 'Error logging in, please try again'})
       })
       .then(_ => {
         if (!this.props.isAuthenticated)
@@ -73,7 +75,10 @@ class Login extends React.Component {
                   style={formPartStyle}
                   htmlFor="email-input"
                 >Email</label>
-                <input className="form-input"
+                <input className={`
+                    form-input
+                    ${this.state.loginError && ' is-error'}
+                  `}
                   type="text"
                   id="email-input"
                   placeholder="Email"
@@ -85,7 +90,10 @@ class Login extends React.Component {
                   style={formPartStyle}
                   htmlFor="password-input"
                 >Password</label>
-                <input className="form-input"
+                <input className={`
+                    form-input
+                    ${this.state.loginError && ' is-error'}
+                  `}
                   type="password"
                   id="password-input"
                   placeholder="password"
@@ -93,6 +101,7 @@ class Login extends React.Component {
                   value={this.state.password}
                   disabled={this.state.loggingIn}
                 ></input>
+                <p className="form-input-hint">{this.state.loginError}</p>
               </div>
               <SpinnerButton
                 buttonStyle={formPartStyle}

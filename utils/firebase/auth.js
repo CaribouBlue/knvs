@@ -7,9 +7,6 @@ const createUserWithEmailAndPassword = (email, password) => {
     .catch((error) => {
       var errorCode = error.code;
       var errorMessage = error.message;
-      console.log('Error creating user:')
-      console.log('\t' + errorCode)
-      console.log('\t' + errorMessage)
       throw {code: errorCode, msg: errorMessage}
     });
 }
@@ -21,9 +18,6 @@ const signInWithEmailAndPassword = (email, password) => {
     .catch((error) => {
       var errorCode = error.code;
       var errorMessage = error.message;
-      console.log('Error creating user:')
-      console.log('\t' + errorCode)
-      console.log('\t' + errorMessage)
       throw {code: errorCode, msg: errorMessage}
     });
 }

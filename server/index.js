@@ -6,6 +6,8 @@ const dev = process.env.NODE_ENV !== 'production'
 const nextApp = next({ dev })
 const handle = nextApp.getRequestHandler()
 
+const handleMiddleware = (req, res) => {handle(req, res)}
+
 nextApp.prepare()
   .then(() => {
     const app = express()
@@ -15,11 +17,7 @@ nextApp.prepare()
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use('/api', api)
 
-    
-
-    app.get('*', (req, res) => {
-      handle(req, res)
-    })
+    app.get('*', handleMiddleware)
 
     PORT = process.env.PORT || process.env.port || 1337
     app.listen(PORT, () => {

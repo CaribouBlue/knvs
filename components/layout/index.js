@@ -10,7 +10,7 @@ export default (props) => {
       }
     `}</style>
     <Header
-      loggingIn={!!props.loggingIn}
+      {...props}
     ></Header>
     <div className="children-container">
       {props.children}
