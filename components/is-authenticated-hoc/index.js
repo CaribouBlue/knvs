@@ -1,10 +1,12 @@
-import firebase from '../../utils/firebase'
 import React from 'react'
+import firebase from '../../utils/firebase'
+import Router from 'next/router'
 
-export default (WrappedComponent) => {
+export default (WrappedComponent, authRequired=false) => {
   return class HOC extends React.Component {
     constructor(props) {
       super(props)
+      this.authRequired = authRequired
       this.state = {
         isAuthenticated: null,
       }
@@ -24,7 +26,10 @@ export default (WrappedComponent) => {
         .auth()
         .onAuthStateChanged((user) => {
           if (this._isMounted)
-            this.setState({isAuthenticated: !!user})
+            if (this.authRequired && !user)
+              Router.push('/login')
+            else
+              this.setState({isAuthenticated: !!user})
         })
     }
 

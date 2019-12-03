@@ -1,4 +1,5 @@
 import Layout from '../../components/layout';
+import isAuthenticated from '../../components/is-authenticated-hoc'
 import { useRouter } from 'next/router'
 import { getPathSegment } from '../../utils/router'
 
@@ -30,4 +31,4 @@ const Page = props => {
   </>
 };
 
-export default Page
+export default isAuthenticated(Page, true)

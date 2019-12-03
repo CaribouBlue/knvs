@@ -1,9 +1,9 @@
 import Router from 'next/router'
 import Layout from '../components/layout';
-import { signInWithEmailAndPassword } from '../utils/firebase/auth'
 import isAuthenticated from '../components/is-authenticated-hoc'
 import SignUpModal from '../components/sign-up-modal'
 import SpinnerButton from '../components/spinner-button'
+import { signInWithEmailAndPassword } from '../utils/firebase/auth'
 
 const formPartStyle = {
   marginTop: '20px',
