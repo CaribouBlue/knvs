@@ -1,0 +1,20 @@
+.cal-controls {
+  padding: 10px 0;
+
+  .date-selector {
+    cursor: pointer;
+  }
+
+  .date-selector:hover {
+    background-color: lightgrey;
+  }
+
+  h5 {
+    margin: 0;
+    padding: 5px;
+  }
+}
+
+.cal-controls * {
+  margin-right: 10px;
+}

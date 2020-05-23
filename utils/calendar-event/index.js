@@ -1,4 +1,5 @@
 import uuid from 'uuid/v4'
+import {getMonthDetails} from '../date'
 
 class CalendarEvent {
   constructor(config) {
@@ -16,7 +17,6 @@ class CalendarEvent {
     } else {
       this.date = new Date()
     }
-    console.log(this.date.toLocaleString())
     this.startTime = this.generateTimeTuple(this.date)
   }
 
@@ -69,6 +69,30 @@ class CalendarEvent {
     }
   }
 
+  getTitleTooltip() {
+    const title = this.title
+    if (title.length < 50) return this.title
+    let charCounter = 0
+    const titleToolTip = title.split(' ').reduce((memo, word) => {
+      if (charCounter + word.length > 50) {
+        memo += '\n'
+        charCounter = word.length
+      } else {
+        charCounter += word.length
+      }
+      return memo + ' ' + word
+    }, '')
+    return titleToolTip
+  }
+
+  getSubtitle(twelve=false) {
+    if (this.isAllDay) return 'All Day'
+    const startTime = twelve ? this.startTimeStr12 : this.startTimeStr24
+    const endTime = twelve ? this.endTimeStr12 : this.endTimeStr24
+    const month = getMonthDetails(this.date.getMonth()).abbrv
+    return `${month} ${this.date.getDate()} ${startTime} ${endTime}`
+  }
+
   set startTime(timeTuple) {
     if (!this.date) throw new Error('Set date before startTime')
     timeTuple = this.fixTimeTuple(timeTuple)
@@ -106,11 +130,11 @@ class CalendarEvent {
   }
 
   get endTimeStr12() {
-    return this.generateTimeString(this._endTime, true)
+    return this.generateTimeString(this.endTime, true)
   }
 
   get endTimeStr24() {
-    return this.generateTimeString(this._endTime)
+    return this.generateTimeString(this.endTime)
   }
 
   get duration() {

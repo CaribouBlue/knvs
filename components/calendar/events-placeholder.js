@@ -48,7 +48,7 @@ export default class EventsPlaceHolder extends React.Component {
             }}
             onClick={() => this.onEventClick()}
         ><b>{`${this.props.events.length} more`}</b></p>
-        <div className="tile events"
+        <div className="tile event-popup"
           style={{
             display: this.props.open ? 'block' : 'none',
             right: this.state.eventTileRight

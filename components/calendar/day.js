@@ -50,13 +50,14 @@ export default class Day extends React.Component {
   }
 
   getDayDateDisplay() {
+    const isToday = this.day === new Date().getDate() + '' && this.month === new Date().getMonth() && this.year === new Date().getFullYear()
     let dayDateDisplay = this.day
     if (this.day === '1')
       dayDateDisplay = `${getMonthDetails(this.month).abbrv} ${dayDateDisplay}`
     let className = 'day-date'
     if (this.props.selectedMonth !== this.month)
       className += ' unselected-month'
-    else if (this.day === new Date().getDay() + 1 + '')
+    else if (isToday)
       className += ' today'
     return <p className={className}>
       {dayDateDisplay}
